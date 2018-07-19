@@ -24,7 +24,7 @@ class Service(models.Model):
 		return self.name
 
 class Text_modal(models.Model):
-	service = models.ForeignKey(Service, on_delete=models.DO_NOTHING)
+	service = models.ForeignKey(Service, related_name='text_modals', on_delete=models.DO_NOTHING)
 	modal = models.CharField(max_length=20)
 	text = models.TextField()
 
@@ -97,8 +97,8 @@ class Team(models.Model):
 class Posting(models.Model):
 	title = models.CharField('Título', max_length=100)
 	category = models.CharField('Categoria', max_length=50)
-	author = models.ForeignKey(Team, on_delete=models.DO_NOTHING)
-	publication_date = models.DateTimeField(blank=True, null=True)
+	author = models.ForeignKey(Team, related_name='postings', on_delete=models.DO_NOTHING)
+	publication_date = models.DateTimeField(auto_now_add=True)
 	#imagem = StdImageField(null=True,blank=True, upload_to=UploadToUUID(path='postagens/'), variations={'normal': (1900, 550, True)})
 	text = models.TextField()
 
