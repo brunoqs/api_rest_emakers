@@ -3,25 +3,25 @@ from .models import *
 
 # Register your models here.
 
-class DestaqueAdmin(admin.ModelAdmin):
-	list_display = ('titulo', 'descricao',)
+class HighlightAdmin(admin.ModelAdmin):
+	list_display = ('title', 'description',)
 
-class ServicoAdmin(admin.ModelAdmin):
-	list_display = ('nome',)
+class ServiceAdmin(admin.ModelAdmin):
+	list_display = ('name',)
 
 class PortfolioAdmin(admin.ModelAdmin):
-	list_display = ('nome',)
+	list_display = ('name',)
 
-class EquipeAdmin(admin.ModelAdmin):
-	list_display = ('nome', 'tipo_cargo', 'cargo')
+class TeamAdmin(admin.ModelAdmin):
+	list_display = ('name', 'role_type', 'role')
 
-class PostagemAdmin(admin.ModelAdmin):
-	list_display = ('titulo', 'categoria', 'autor',)
+class PostingAdmin(admin.ModelAdmin):
+	list_display = ('title', 'category', 'author',)
 
-admin.site.register(Destaque, DestaqueAdmin)
-admin.site.register(Servico, ServicoAdmin)
-admin.site.register(Texto_modal)
-admin.site.register(Img_texto)
+admin.site.register(Highlight, HighlightAdmin)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(Text_modal)
+admin.site.register(Img_text)
 admin.site.register(Portfolio, PortfolioAdmin)
-admin.site.register(Equipe, EquipeAdmin)
-admin.site.register(Postagem, PostagemAdmin)
+admin.site.register(Team, TeamAdmin)
+admin.site.register(Posting, PostingAdmin)
