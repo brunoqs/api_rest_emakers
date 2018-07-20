@@ -1,6 +1,4 @@
 from django.db import models
-#from stdimage.models import StdImageField
-#from stdimage.utils import UploadToUUID
 from django.urls import reverse
 
 # Create your models here.
@@ -8,7 +6,7 @@ from django.urls import reverse
 class Highlight(models.Model):
 	title = models.CharField('Título', max_length=50)
 	description = models.CharField('Descrição', max_length=50)
-	#imagem = StdImageField(null=True,blank=True, upload_to=UploadToUUID(path='destaques/'), variations={'normal': (1900, 550, True)})
+	imagem = models.ImageField(upload_to='highlights/')
 
 	def __str__(self):
 		return self.title
@@ -17,7 +15,7 @@ class Highlight(models.Model):
 class Service(models.Model):
 	name = models.CharField(max_length=20)
 	examples = models.CharField(max_length=100)
-	#imagem = StdImageField(null=True,blank=True, upload_to=UploadToUUID(path='servicos/'), variations={'normal': (1900, 550, True)})
+	imagem = models.ImageField(upload_to='services/')	
 	description = models.TextField()
 
 	def __str__(self):
@@ -86,7 +84,7 @@ class Team(models.Model):
 	role = models.CharField(max_length=20, choices=ROLE_CHOICE)
 	pos_role = models.IntegerField(choices=POS_ROLE_CHOICE)
 	about = models.TextField()
-	#imagem = StdImageField(null=True,blank=True, upload_to=UploadToUUID(path='equipe/aluno'), variations={'normal': (1900, 550, True)})
+	imagem = models.ImageField(upload_to='team/')	
 	linkedin = models.CharField(max_length=100)
 	github = models.CharField(max_length=100)
 
@@ -99,7 +97,7 @@ class Posting(models.Model):
 	category = models.CharField('Categoria', max_length=50)
 	author = models.ForeignKey(Team, related_name='postings', on_delete=models.DO_NOTHING)
 	publication_date = models.DateTimeField(auto_now_add=True)
-	#imagem = StdImageField(null=True,blank=True, upload_to=UploadToUUID(path='postagens/'), variations={'normal': (1900, 550, True)})
+	imagem = models.ImageField(upload_to='postings/')
 	text = models.TextField()
 
 	def __str__(self):

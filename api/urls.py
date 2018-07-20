@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from ewebsite.views import HighlightViewSet, ServiceViewSet, TextModalViewSet, PortfolioViewSet, TeamViewSet, PostingViewSet
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'highlight/', HighlightViewSet)
+router.register(r'service/', ServiceViewSet)
+router.register(r'textmodal/', TextModalViewSet)
+router.register(r'portfolio/', PortfolioViewSet)
+router.register(r'team/', TeamViewSet)
+router.register(r'posting/', PostingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('ewebsite.urls')),
+    path('api/', include(router.urls)),
+	path('api-auth/', include('rest_framework.urls')),
 ]
